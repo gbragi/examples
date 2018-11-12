@@ -6,6 +6,7 @@ git:
   depth: false
 before_install:
     - git clone https://github.com/pulumi/scripts ${GOPATH}/src/github.com/pulumi/scripts
+    - git -C ${GOPATH}/src/github.com/pulumi/scripts checkout ellismg/add-nightly-run
     - source ${GOPATH}/src/github.com/pulumi/scripts/ci/prepare-environment.sh
     - source ${PULUMI_SCRIPTS}/ci/keep-failed-tests.sh
 install:
@@ -18,8 +19,9 @@ install:
     - helm repo add bitnami https://charts.bitnami.com/bitnami
 before_script:
     - ${PULUMI_SCRIPTS}/ci/ensure-dependencies
+    - source ${PULUMI_SCRIPTS}/ci/override-dev.sh
 script:
-    - go test ./misc/test/... --timeout 1h -v -count=1 -short
+    - make travis_${TRAVIS_EVENT_TYPE}
 after_failure:
     - ${PULUMI_SCRIPTS}/ci/upload-failed-tests
 notifications:
