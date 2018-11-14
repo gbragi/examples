@@ -256,7 +256,7 @@
   version = "v1.0.0"
 
 [[projects]]
-  branch = "master"
+  branch = "ellismg/test-harness-improvments"
   name = "github.com/pulumi/pulumi"
   packages = [
     "pkg/apitype",
@@ -296,7 +296,7 @@
     "pkg/workspace",
     "sdk/proto/go"
   ]
-  revision = "676adf62b8d4d5dc83a7cf91eff0eb6d2eb1b9a8"
+  revision = "1601329f81de5936369f17c605c02a4e706a25db"
 
 [[projects]]
   branch = "master"
@@ -498,8 +498,8 @@
     "core",
     "terminal"
   ]
-  revision = "fb519f89e19299d852ffdd9b734af122d2dcbd30"
-  version = "v1.7.0"
+  revision = "3409e8256f5cf23a9e9ee2a8816c4c5da78a181d"
+  version = "v1.6.4"
 
 [[projects]]
   name = "gopkg.in/src-d/go-billy.v4"
@@ -575,6 +575,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "2811b7bbabe0f2389bed6f5bffbf43f5d298e6c14bde0a21ff18dcc49bbc7b57"
+  inputs-digest = "6deb09fb3d51da179fba4088039a65c95366a494ec4935b65d141f2b69942611"
   solver-name = "gps-cdcl"
   solver-version = 1
