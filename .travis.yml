@@ -19,9 +19,8 @@ install:
     - helm repo add bitnami https://charts.bitnami.com/bitnami
 before_script:
     - ${PULUMI_SCRIPTS}/ci/ensure-dependencies
-    - source ${PULUMI_SCRIPTS}/ci/override-dev.sh
 script:
-    - make travis_${TRAVIS_EVENT_TYPE}
+    - ${PULUMI_SCRIPTS}/ci/run-nightly
 after_failure:
     - ${PULUMI_SCRIPTS}/ci/upload-failed-tests
 notifications:

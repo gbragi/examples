@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"github.com/pulumi/pulumi/pkg/testing/integration"
+	"github.com/pulumi/pulumi/pkg/util/contract"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -35,6 +36,7 @@ func TestExamples(t *testing.T) {
 	base := integration.ProgramTestOptions{
 		Tracing:              "https://tracing.pulumi-engineering.com/collector/api/v1/spans",
 		ExpectRefreshChanges: true,
+		Overrides:            getNodeOverrides(),
 	}
 
 	examples := []integration.ProgramTestOptions{
@@ -255,6 +257,23 @@ func TestExamples(t *testing.T) {
 			integration.ProgramTest(t, &example)
 		})
 	}
+}
+
+// getNodeOverrides uses the PULUMI_TEST_NODE_OVERRIDES variaible to compute a set of packages to override.
+// If set, it should be of the form <package-name>=<version>, which each clause seperated by a colon.
+func getNodeOverrides() map[string]string {
+	overrides := make(map[string]string)
+	if val := os.Getenv("PULUMI_TEST_NODE_OVERRIDES"); val != "" {
+		for _, overrideClause := range strings.Split(val, ":") {
+			data := strings.Split(overrideClause, "=")
+			contract.Assertf(len(data) == 2,
+				"could not decode %s as an override, should be of the form <package>=<version>", overrideClause)
+			packageName := data[0]
+			packageVersion := data[1]
+			overrides[packageName] = packageVersion
+		}
+	}
+	return overrides
 }
 
 func assertHTTPResult(t *testing.T, output interface{}, check func(string) bool) bool {
