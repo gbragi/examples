@@ -256,7 +256,7 @@
   version = "v1.0.0"
 
 [[projects]]
-  branch = "ellismg/test-harness-improvments"
+  branch = "ellismg/add-overrides-to-test-harness"
   name = "github.com/pulumi/pulumi"
   packages = [
     "pkg/apitype",
@@ -296,7 +296,7 @@
     "pkg/workspace",
     "sdk/proto/go"
   ]
-  revision = "7b5796bd46025b78ce0d5c40a816b3f03c0c20d1"
+  revision = "48d929bffaa99e7c13b1580e4e0e9057a395196b"
 
 [[projects]]
   branch = "master"
@@ -575,6 +575,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "9c627a4d04a1c1db7b6b83ece18770656fcd0e5b831491c4165f53f4fbe8f0c4"
+  inputs-digest = "0a774316070cd9838d1718ae4b126a8991a77abdbd25cb799c2e6015ad48072d"
   solver-name = "gps-cdcl"
   solver-version = 1
